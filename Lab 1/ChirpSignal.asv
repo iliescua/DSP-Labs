@@ -85,39 +85,19 @@ title('Continuous Time Signal(Time Scaling)','FontSize',16)
 
 %Time Shifting Applied 
 figure
-c=8192;
-y=cat(1,zeros(c,1),x);
-%sound(y);
+c=2;
+y=upsample(x,c);
+sound(y);
 %Discrete Time Graph
 subplot(211)
 stem(1:length(y), y, 'Color', 'k')
 xlabel('n','FontSize',14,'FontAngle','italic')
 ylabel('x[n]','FontSize',14,'FontAngle','italic')
-title('Discrete Time Signal (Time Shifting)','FontSize',16)
+title('Discrete Time Signal (Time Scaling)','FontSize',16)
 
 %Continuous Time Graph
 subplot(212)
 plot((1:length(y))/fs, y, 'Color', 'k')
 xlabel('t','FontSize',14,'FontAngle','italic')
 ylabel('x(t)','FontSize',14,'FontAngle','italic')
-title('Continuous Time Signal(Time Shifting)','FontSize',16)
-
-
-%Amplitude Shifting Applied 
-figure
-c=1;
-y=x+c;
-%sound(y);
-%Discrete Time Graph
-subplot(211)
-stem(1:length(y), y, 'Color', 'k')
-xlabel('n','FontSize',14,'FontAngle','italic')
-ylabel('x[n]','FontSize',14,'FontAngle','italic')
-title('Discrete Time Signal (Amplitude Shifting)','FontSize',16)
-
-%Continuous Time Graph
-subplot(212)
-plot((1:length(y))/fs, y, 'Color', 'k')
-xlabel('t','FontSize',14,'FontAngle','italic')
-ylabel('x(t)','FontSize',14,'FontAngle','italic')
-title('Continuous Time Signal(Amplitude Shifting)','FontSize',16)
+title('Continuous Time Signal(Time Scaling)','FontSize',16)
