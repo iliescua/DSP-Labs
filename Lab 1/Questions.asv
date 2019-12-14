@@ -3,19 +3,20 @@
 %better model the impact of these operations
 
 %Puts data from chirp audio into S
-S=load('chirp'); 
+S=load('handel'); 
 x=S.y; fs=S.Fs;
 
-%Original Graphs (Unmodified)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Original Graphs (Question 1)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure
-%sound(x);
+sound(x);
 %Discrete Time Graph
 subplot(211)
 stem(1:length(x), x, 'Color', 'k')
 xlabel('n','FontSize',14,'FontAngle','italic')
 ylabel('x[n]','FontSize',14,'FontAngle','italic')
 title('Discrete Time Signal','FontSize',16)
-
 %Continuous Time Graph
 subplot(212)
 plot((1:length(x))/fs, x, 'Color', 'k')
@@ -23,81 +24,58 @@ xlabel('t','FontSize',14,'FontAngle','italic')
 ylabel('x(t)','FontSize',14,'FontAngle','italic')
 title('Continuous Time Signal','FontSize',16)
 
-
-%Amplitude Scaling Applied 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Time Scaling Upsample (Question 2)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure
-c=100;
-y=c*x;
-%sound(y);
-%Discrete Time Graph
-subplot(211)
-stem(1:length(y), y, 'Color', 'k')
-xlabel('n','FontSize',14,'FontAngle','italic')
-ylabel('x[n]','FontSize',14,'FontAngle','italic')
-title('Discrete Time Signal (Amplitude Scaling)','FontSize',16)
-
-%Continuous Time Graph
-subplot(212)
-plot((1:length(y))/fs, y, 'Color', 'k')
-xlabel('t','FontSize',14,'FontAngle','italic')
-ylabel('x(t)','FontSize',14,'FontAngle','italic')
-title('Continuous Time Signal(Amplitude Scaling)','FontSize',16)
-
-
-%Time Reversal Applied 
-figure
-y=flipud(x);
-%sound(y);
-%Discrete Time Graph
-subplot(211)
-stem(1:length(y), y, 'Color', 'k')
-xlabel('n','FontSize',14,'FontAngle','italic')
-ylabel('x[n]','FontSize',14,'FontAngle','italic')
-title('Discrete Time Signal (Time Reversal)','FontSize',16)
-
-%Continuous Time Graph
-subplot(212)
-plot((1:length(y))/fs, y, 'Color', 'k')
-xlabel('t','FontSize',14,'FontAngle','italic')
-ylabel('x(t)','FontSize',14,'FontAngle','italic')
-title('Continuous Time Signal(Time Reversal)','FontSize',16)
-
-
-%Time Scaling Applied 
-figure
-c=2;
-y=upsample(x,c);
+c = 2;
+y = upsample(x,c);
 sound(y);
 %Discrete Time Graph
 subplot(211)
 stem(1:length(y), y, 'Color', 'k')
 xlabel('n','FontSize',14,'FontAngle','italic')
 ylabel('x[n]','FontSize',14,'FontAngle','italic')
-title('Discrete Time Signal (Time Scaling)','FontSize',16)
-
+title('Discrete Time Signal (Upsample)','FontSize',16)
 %Continuous Time Graph
 subplot(212)
 plot((1:length(y))/fs, y, 'Color', 'k')
 xlabel('t','FontSize',14,'FontAngle','italic')
 ylabel('x(t)','FontSize',14,'FontAngle','italic')
-title('Continuous Time Signal(Time Scaling)','FontSize',16)
+title('Continuous Time Signal (Upsample)','FontSize',16)
 
-
-%Time Shifting Applied 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Time Scaling Downsample (Question 2)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure
-c=2;
-y=upsample(x,c);
-sound(y);
+c = 2;
+k = 4;
+j = 6;
+y = downsample(x,c);
+z = downsample(x,k);
+a = downsample(x,j);
+%sound(y);
 %Discrete Time Graph
-subplot(211)
+subplot(221)
 stem(1:length(y), y, 'Color', 'k')
 xlabel('n','FontSize',14,'FontAngle','italic')
 ylabel('x[n]','FontSize',14,'FontAngle','italic')
-title('Discrete Time Signal (Time Scaling)','FontSize',16)
-
-%Continuous Time Graph
-subplot(212)
+title('Discrete Time Signal (Downsample)','FontSize',16)
+%Continuous Time for 2 Graph
+subplot(223)
 plot((1:length(y))/fs, y, 'Color', 'k')
 xlabel('t','FontSize',14,'FontAngle','italic')
 ylabel('x(t)','FontSize',14,'FontAngle','italic')
-title('Continuous Time Signal(Time Scaling)','FontSize',16)
+title('Continuous Time Signal (Downsample)','FontSize',16)
+%Continuous Time Graph
+subplot(223)
+plot((1:length(y))/fs, y, 'Color', 'k')
+xlabel('t','FontSize',14,'FontAngle','italic')
+ylabel('x(t)','FontSize',14,'FontAngle','italic')
+title('Continuous Time Signal (Downsample)','FontSize',16)
+%Continuous Time Graph
+subplot(223)
+plot((1:length(y))/fs, y, 'Color', 'k')
+xlabel('t','FontSize',14,'FontAngle','italic')
+ylabel('x(t)','FontSize',14,'FontAngle','italic')
+title('Continuous Time Signal (Downsample)','FontSize',16)
