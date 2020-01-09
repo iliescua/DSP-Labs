@@ -2,7 +2,7 @@
 %operations to it and then graphing the results to 
 %better model the impact of these operations
 
-%Puts data from chirp audio into S
+%Puts data from train audio into S
 S=load('train'); 
 x=S.y; fs=S.Fs;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -32,10 +32,7 @@ t=[1:(length(x))]/fs;
 %Output (Evaluation)
 y=filter(b,a,x);
 
-
-% Plot Signals (Input & Output)
 figure
-
 subplot(211)
 stem(n,x,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
 xlabel('n','FontSize',16,'FontAngle','italic')
@@ -76,8 +73,6 @@ t=[1:(length(x))]/fs;
 %Output (Evaluation)
 y=filter(b,a,x);
 
-
-% Plot Signals (Input & Output)
 figure
 
 subplot(211)
@@ -165,26 +160,26 @@ subplot(4,2,5)
 plot(t,y_4,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
-title('a=0.95)','FontSize',16)
+title('a=0.95','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(4,2,6)
 plot(t,y_5,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
-title('Train IIR Continuous-Time Output Signal (a=0.99)','FontSize',16)
+title('a=0.99','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(4,2,7)
 plot(t,y_6,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
-title('Train IIR Continuous-Time Output Signal (a=1)','FontSize',16)
+title('a=1','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(4,2,8)
 plot(t,y_7,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
-title('Train IIR Continuous-Time Output Signal (a=1.1)','FontSize',16)
+title('a=1.1','FontSize',16)
 set(gca,'FontSize',16)

@@ -2,14 +2,12 @@
 %operations to it and then graphing the results to 
 %better model the impact of these operations
 
-%Puts data from chirp audio into S
+%Puts data from train audio into S
 S=load('train'); 
 x=S.y; fs=S.Fs;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Original
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%sound(x);
-
 % Coefficients (Constants)
 a0=1;
 b0=1;
@@ -29,22 +27,19 @@ n=[1:length(x)];
 % Time (Continuous-Time)
 t=[1:(length(x))]/fs;
 
-%Output (Evaluation)
+% Output (Evaluation)
 y=filter(b,a,x);
 
-
-% Plot Signals (Input & Output)
 figure
-
 subplot(211)
-stem(n,x,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+stem(n,x,'fill','LineWidth',4,'Color','k'),grid
 xlabel('n','FontSize',16,'FontAngle','italic')
 ylabel('x[n]','FontSize',16,'FontAngle','italic')
 title('Signal (Input)','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(212)
-stem(t,x,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+stem(t,x,'fill','LineWidth',4,'Color','k'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('x(t)','FontSize',16,'FontAngle','italic')
 title('Signal (Output)','FontSize',16)
@@ -53,7 +48,6 @@ set(gca,'FontSize',16)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %FIR system
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % Coefficients (Constants)
 a0=1;
 b0=1;
@@ -73,22 +67,19 @@ n=[1:length(x)];
 % Time (Continuous-Time)
 t=[1:(length(x))]/fs;
 
-%Output (Evaluation)
+% Output (Evaluation)
 y=filter(b,a,x);
 
-
-% Plot Signals (Input & Output)
 figure
-
 subplot(211)
-stem(t,x,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+stem(t,x,'fill','LineWidth',4,'Color','k'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('x(t)','FontSize',16,'FontAngle','italic')
 title('Signal (Input)','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(212)
-stem(t,y,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+stem(t,y,'fill','LineWidth',4,'Color','k'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
 title('Signal (Output)','FontSize',16)
@@ -97,8 +88,6 @@ set(gca,'FontSize',16)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %IIR system
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%sound(x);
-
 % Coefficients (Constants)
 a0=1;
 a1_1=0.5;
@@ -126,64 +115,61 @@ n=[1:length(x)];
 % Time (Continuous-Time)
 t=[1:(length(x))]/fs;
 
-%Output (Evaluation)
+% Output (Evaluation)
 y=filter(b,a,x);
 
-
-% Plot Signals (Input & Output)
 figure
-
 subplot(4,2,1)
-plot(t,x,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
+plot(t,x,'LineWidth',4,'Color','k'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('x(t)','FontSize',16,'FontAngle','italic')
 title('X signal','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(4,2,2)
-plot(t,y_1,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
+plot(t,y_1,'LineWidth',4,'Color','k'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
 title('a=0.5','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(4,2,3)
-plot(t,y_2,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
+plot(t,y_2,'LineWidth',4,'Color','k'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
 title('a=-0.5','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(4,2,4)
-plot(t,y_3,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
+plot(t,y_3,'LineWidth',4,'Color','k'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
 title('a=0.9','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(4,2,5)
-plot(t,y_4,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
+plot(t,y_4,'LineWidth',4,'Color','k'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
 title('a=0.95','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(4,2,6)
-plot(t,y_5,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
+plot(t,y_5,'LineWidth',4,'Color','k'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
 title('a=0.99','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(4,2,7)
-plot(t,y_6,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
+plot(t,y_6,'LineWidth',4,'Color','k'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
 title('a=1','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(4,2,8)
-plot(t,y_7,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
+plot(t,y_7,'LineWidth',4,'Color','k'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
 title('a=1.1','FontSize',16)
