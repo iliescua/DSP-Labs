@@ -165,26 +165,26 @@ subplot(4,2,5)
 plot(t,y_4,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
-title('a=0.95','FontSize',16)
+title('a=0.95)','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(4,2,6)
 plot(t,y_5,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
-title('a=0.99','FontSize',16)
+title('Train IIR Continuous-Time Output Signal (a=0.99)','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(4,2,7)
 plot(t,y_6,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
-title('a=1','FontSize',16)
+title('Train IIR Continuous-Time Output Signal (a=1)','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(4,2,8)
 plot(t,y_7,'LineWidth',4,'Color','k','LineStyle','-','Marker','none'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('y(t)','FontSize',16,'FontAngle','italic')
-title('a=1.1','FontSize',16)
+title('Train IIR Continuous-Time Output Signal (a=1.1)','FontSize',16)
 set(gca,'FontSize',16)
