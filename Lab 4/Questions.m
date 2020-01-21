@@ -83,6 +83,8 @@ n_y=ny_beg:1:ny_end;
 % Signal (Output, Matlab)
 y_hilb=conv(x,h_hilb);
 
+%sound(y_hilb);
+
 figure
 subplot(311)
 stem(n_x,x,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
