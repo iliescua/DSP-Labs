@@ -1,0 +1,194 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Cleaning
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all, close all, home
+
+%Loading in a signal and applying various signal 
+%operations to it and then graphing the results to 
+%better model the impact of these operations
+
+%Puts audio data from laughter audio into S
+S=load('laughter'); 
+x=S.y; fs=S.Fs;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Original
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Time (Discrete)
+n=1:length(x);
+
+% Time (Continuous-Time)
+t=[1:(length(x))]/fs;
+
+figure
+subplot(211)
+stem(n,x,'Color', 'k'),grid
+xlabel('n','FontSize',16,'FontAngle','italic')
+ylabel('x[n]','FontSize',16,'FontAngle','italic')
+title('Discrete Time Signal for laughgter','FontSize',16)
+set(gca,'FontSize',16)
+
+subplot(212)
+plot(t,x,'Color', 'k'),grid
+xlabel('t','FontSize',16,'FontAngle','italic')
+ylabel('x(t)','FontSize',16,'FontAngle','italic')
+title('Continuous Time Signal for laughter','FontSize',16)
+set(gca,'FontSize',16)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%LPF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Function (Kronecker Delta Function)
+KronDel=@(n) heaviside(n)-heaviside(n_h-1)
+
+% Discrete Times (System)
+n_x=1:length(x);
+n_h=1:length(x);
+% Signals (System)
+h_lpf=0.0016*KronDel(n_h)+0.0057*KronDel(n_h-1)+0.0089*KronDel(n_h-2)+...
+    0.0011*KronDel(n_h-3)-0.0240*KronDel(n_h-4)-0.0537*KronDel(n_h-5)-...
+    0.0530*KronDel(n_h-6)+0.012*KronDel(n_h-7)+0.1361*KronDel(n_h-8)+...
+    0.2621*KronDel(n_h-9)+0.3155*KronDel(n_h-10)+0.2621*KronDel(n_h-11)+...
+    0.1361*KronDel(n_h-12)+0.0120*KronDel(n_h-13)-0.0530*KronDel(n_h-14)-...
+    0.0537*KronDel(n_h-15)-0.0240*KronDel(n_h-16)+0.0011*KronDel(n_h-17)+...
+    0.0089*KronDel(n_h-18)+0.0057*KronDel(n_h-19)+0.0016*KronDel(n_h-20);
+
+% Output Time
+ny_beg=n_x(1)+n_h(1);
+ny_end=n_x(end)+n_h(end);
+n_y=ny_beg:1:ny_end;
+
+% Signal (Output, Matlab)
+y_lpf=conv(x,h_lpf);
+
+figure
+subplot(311)
+stem(n_x,x,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+xlabel('n','FontSize',12,'FontAngle','italic')
+ylabel('x[n]','FontSize',12,'FontAngle','italic')
+title('Signal (Input)','FontSize',12)
+
+subplot(312)
+stem(n_h,h_lpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+xlabel('n','FontSize',12,'FontAngle','italic')
+ylabel('h[n]','FontSize',12,'FontAngle','italic')
+title('Signal (System)','FontSize',12)
+
+subplot(313)
+stem(n_y,y_lpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+xlabel('n','FontSize',12,'FontAngle','italic')
+ylabel('y_lpf[n]','FontSize',12,'FontAngle','italic')
+title('Convolution (LPF Output)','FontSize',12)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%HPF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Discrete Times (System)
+n=1:length(x);
+
+% Signals (System)
+h_hpf=0.0041*KronDel(n_h)-0.0154*KronDel(n_h-1)+0.0110*KronDel(n_h-2)+...
+    0.0171*KronDel(n_h-3)-0.0070*KronDel(n_h-4)-0.0348*KronDel(n_h-5)-...
+    0.0103*KronDel(n_h-6)+0.0586*KronDel(n_h-7)+0.0648*KronDel(n_h-8)-...
+    0.0797*KronDel(n_h-9)-0.3026*KronDel(n_h-10)+0.5883*KronDel(n_h-11)-...
+    0.3026*KronDel(n_h-12)-0.0797*KronDel(n_h-13)+0.0648*KronDel(n_h-14)+...
+    0.0586*KronDel(n_h-15)-0.0103*KronDel(n_h-16)-0.0348*KronDel(n_h-17)-...
+    0.0070*KronDel(n_h-18)+0.0171*KronDel(n_h-19)+0.0110*KronDel(n_h-20)-...
+    0.0154*KronDel(n_h-21)+0.0041*KronDel(n_h-22);
+
+% Signal (Output, Matlab)
+y_hpf=conv(x,h_hpf);
+
+figure
+subplot(311)
+stem(n,x,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+xlabel('n','FontSize',12,'FontAngle','italic')
+ylabel('x[n]','FontSize',12,'FontAngle','italic')
+title('Signal (Input)','FontSize',12)
+
+subplot(312)
+stem(n,h_lpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+xlabel('n','FontSize',12,'FontAngle','italic')
+ylabel('h[n]','FontSize',12,'FontAngle','italic')
+title('Signal (System)','FontSize',12)
+
+subplot(313)
+stem(n,y_hpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+xlabel('n','FontSize',12,'FontAngle','italic')
+ylabel('y_hpf[n]','FontSize',12,'FontAngle','italic')
+title('Convolution (HPF Output)','FontSize',12)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%BPF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Discrete Times (System)
+n=1:length(x);
+
+% Signals (System)
+h_bpf=0.0016*KronDel(n_h)+0.0057*KronDel(n_h-1)+0.0089*KronDel(n_h-2)+...
+    0.0011*KronDel(n_h-3)-0.0240*KronDel(n_h-4)-0.0537*KronDel(n_h-5)-...
+    0.0530*KronDel(n_h-6)+0.012*KronDel(n_h-7)+0.1361*KronDel(n_h-8)+...
+    0.2621*KronDel(n_h-9)+0.3155*KronDel(n_h-10)+0.2621*KronDel(n_h-11)+...
+    0.1361*KronDel(n_h-12)+0.0120*KronDel(n_h-13)-0.0530*KronDel(n_h-14)-...
+    0.0537*KronDel(n_h-15)-0.0240*KronDel(n_h-16)+0.0011*KronDel(n_h-17)+...
+    0.0089*KronDel(n_h-18)+0.0057*KronDel(n_h-19)+0.0016*KronDel(n_h-20);
+
+% Signal (Output, Matlab)
+y_bpf=conv(x,h_bpf);
+
+figure
+subplot(311)
+stem(n,x,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+xlabel('n','FontSize',12,'FontAngle','italic')
+ylabel('x[n]','FontSize',12,'FontAngle','italic')
+title('Signal (Input)','FontSize',12)
+
+subplot(312)
+stem(n,h_lpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+xlabel('n','FontSize',12,'FontAngle','italic')
+ylabel('h[n]','FontSize',12,'FontAngle','italic')
+title('Signal (System)','FontSize',12)
+
+subplot(313)
+stem(n,y_bpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+xlabel('n','FontSize',12,'FontAngle','italic')
+ylabel('y_bpf[n]','FontSize',12,'FontAngle','italic')
+title('Convolution (BPF Output)','FontSize',12)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%BSF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Function (Kronecker Delta Function)
+KronDel=@(n) heaviside(n)-heaviside(n_h-1)
+
+% Discrete Times (System)
+n=1:length(x);
+
+% Signals (System)
+h_bsf=0.0016*KronDel(n_h)+0.0057*KronDel(n_h-1)+0.0089*KronDel(n_h-2)+...
+    0.0011*KronDel(n_h-3)-0.0240*KronDel(n_h-4)-0.0537*KronDel(n_h-5)-...
+    0.0530*KronDel(n_h-6)+0.012*KronDel(n_h-7)+0.1361*KronDel(n_h-8)+...
+    0.2621*KronDel(n_h-9)+0.3155*KronDel(n_h-10)+0.2621*KronDel(n_h-11)+...
+    0.1361*KronDel(n_h-12)+0.0120*KronDel(n_h-13)-0.0530*KronDel(n_h-14)-...
+    0.0537*KronDel(n_h-15)-0.0240*KronDel(n_h-16)+0.0011*KronDel(n_h-17)+...
+    0.0089*KronDel(n_h-18)+0.0057*KronDel(n_h-19)+0.0016*KronDel(n_h-20);
+
+% Signal (Output, Matlab)
+y_bsf=conv(x,h_bsf);
+
+figure
+subplot(311)
+stem(n,x,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+xlabel('n','FontSize',12,'FontAngle','italic')
+ylabel('x[n]','FontSize',12,'FontAngle','italic')
+title('Signal (Input)','FontSize',12)
+
+subplot(312)
+stem(n,h_lpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+xlabel('n','FontSize',12,'FontAngle','italic')
+ylabel('h[n]','FontSize',12,'FontAngle','italic')
+title('Signal (System)','FontSize',12)
+
+subplot(313)
+stem(n,y_bsf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+xlabel('n','FontSize',12,'FontAngle','italic')
+ylabel('y_bsf[n]','FontSize',12,'FontAngle','italic')
+title('Convolution (BDF Output)','FontSize',12)

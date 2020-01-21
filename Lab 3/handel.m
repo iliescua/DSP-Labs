@@ -5,7 +5,6 @@
 %Puts audio data from handel audio into S
 S=load('handel'); 
 x=S.y; fs=S.Fs;
-%sound(x);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Original

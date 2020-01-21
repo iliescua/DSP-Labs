@@ -1,7 +1,8 @@
+
+
 %Puts audio data from splat audio into S
 S=load('splat'); 
 x=S.y; fs=S.Fs;
-%sound(x);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Original
