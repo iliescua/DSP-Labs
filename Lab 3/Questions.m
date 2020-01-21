@@ -89,7 +89,7 @@ t=[1:(length(x))]/fs;
 y=filter(b,a,x);
 e=x-y;
 
-%sound(y);
+sound(y);
 figure
 subplot(311)
 plot(t,x, 'Color', 'k'),grid
