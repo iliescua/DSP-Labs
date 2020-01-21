@@ -11,7 +11,7 @@ clear all, close all, home
 %Puts audio data from laughter audio into S
 S=load('laughter'); 
 x=S.y; fs=S.Fs;
-
+sound(x);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Original
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,6 +62,8 @@ n_y=ny_beg:1:ny_end;
 % Signal (Output, Matlab)
 y_lpf=conv(x,h_lpf);
 
+%sound(y_lpf);
+
 figure
 subplot(311)
 stem(n_x,x,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
@@ -106,6 +108,8 @@ y_hpf=conv(x,h_hpf);
 ny_beg=n_x(1)+n_h(1);
 ny_end=n_x(end)+n_h(end);
 n_y=ny_beg:1:ny_end;
+
+%sound(y_hpf);
 
 figure
 subplot(311)
@@ -158,6 +162,8 @@ ny_beg=n_x(1)+n_h(1);
 ny_end=n_x(end)+n_h(end);
 n_y=ny_beg:1:ny_end;
 
+%sound(y_bpf);
+
 figure
 subplot(311)
 stem(n_x,x,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
@@ -203,6 +209,8 @@ h_bsf=-0.0073*KronDel(n)+0.0096*KronDel(n-1)-0.0007*KronDel(n-2)+...
 % Signal (Output, Matlab)
 y_bsf=conv(x,h_bsf);
 
+%sound(y_bsf);
+
 figure
 subplot(311)
 stem(n_x,x,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
@@ -221,4 +229,4 @@ subplot(313)
 stem(n_y,y_bsf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
 xlabel('n','FontSize',12,'FontAngle','italic')
 ylabel('y_bsf[n]','FontSize',12,'FontAngle','italic')
-title('Convolution (BDF Output)','FontSize',12)
+title('Convolution (BSF Output)','FontSize',12)

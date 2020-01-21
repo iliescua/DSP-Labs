@@ -11,7 +11,7 @@ clear all, close all, home
 %Puts audio data from laughter audio into S
 S=load('laughter'); 
 x=S.y; fs=S.Fs;
-
+%sound(x);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Differentiator
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -35,6 +35,9 @@ n_y=ny_beg:1:ny_end;
 
 % Signal (Output, Matlab)
 y_hilb=conv(x,h_hilb);
+
+
+sound(y_hilb);
 
 figure
 subplot(311)
