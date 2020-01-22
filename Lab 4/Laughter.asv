@@ -26,14 +26,14 @@ subplot(211)
 stem(n,x,'Color', 'k'),grid
 xlabel('n','FontSize',16,'FontAngle','italic')
 ylabel('x[n]','FontSize',16,'FontAngle','italic')
-title('Discrete Time Signal for Laughgter','FontSize',16)
+title('Discrete Time Signal for laughgter','FontSize',16)
 set(gca,'FontSize',16)
 
 subplot(212)
 plot(t,x,'Color', 'k'),grid
 xlabel('t','FontSize',16,'FontAngle','italic')
 ylabel('x(t)','FontSize',16,'FontAngle','italic')
-title('Continuous Time Signal for Laughter','FontSize',16)
+title('Continuous Time Signal for laughter','FontSize',16)
 set(gca,'FontSize',16)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -81,7 +81,7 @@ set(gca,'XLim',[0 20]),set(gca,'XTick',[0:1:20])
 subplot(313)
 stem(n_y,y_lpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
 xlabel('n','FontSize',12,'FontAngle','italic')
-ylabel('y_l_p_f[n]','FontSize',12,'FontAngle','italic')
+ylabel('y_lpf[n]','FontSize',12,'FontAngle','italic')
 title('Convolution (LPF Output)','FontSize',12)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,7 +128,7 @@ set(gca,'XLim',[0 22]),set(gca,'XTick',[0:1:22])
 subplot(313)
 stem(n_y,y_hpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
 xlabel('n','FontSize',12,'FontAngle','italic')
-ylabel('y_h_p_f[n]','FontSize',12,'FontAngle','italic')
+ylabel('y_hpf[n]','FontSize',12,'FontAngle','italic')
 title('Convolution (HPF Output)','FontSize',12)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -181,7 +181,7 @@ set(gca,'XLim',[0 41]),set(gca,'XTick',[0:1:41])
 subplot(313)
 stem(n_y,y_bpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
 xlabel('n','FontSize',12,'FontAngle','italic')
-ylabel('y_b_p_f[n]','FontSize',12,'FontAngle','italic')
+ylabel('y_bpf[n]','FontSize',12,'FontAngle','italic')
 title('Convolution (BPF Output)','FontSize',12)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -228,5 +228,5 @@ set(gca,'XLim',[0 38]),set(gca,'XTick',[0:1:38])
 subplot(313)
 stem(n_y,y_bsf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
 xlabel('n','FontSize',12,'FontAngle','italic')
-ylabel('y_b_s_f[n]','FontSize',12,'FontAngle','italic')
+ylabel('y_bsf[n]','FontSize',12,'FontAngle','italic')
 title('Convolution (BSF Output)','FontSize',12)

@@ -12,7 +12,6 @@ clear all, close all, home
 S=load('laughter'); 
 x=S.y; fs=S.Fs;
 %sound(x);
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Differentiator
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -24,7 +23,7 @@ n_x=1:length(x);
 n_h=1:length(x);
 
 % Signals (System)
-h_diff=-0.0056*KronDel(n_h)-0.1052*KronDel(n_h-1)+0.1233*KronDel(n_h-2)+...
+h_hilb=-0.0056*KronDel(n_h)-0.1052*KronDel(n_h-1)+0.1233*KronDel(n_h-2)+...
     0.2461*KronDel(n_h-3)+0.218*KronDel(n_h-4)+0*KronDel(n_h-5)-...
     0.2180*KronDel(n_h-6)-0.2461*KronDel(n_h-7)-0.1233*KronDel(n_h-8)+...
     0.1052*KronDel(n_h-9)+0.0056*KronDel(n_h-10);
@@ -35,7 +34,7 @@ ny_end=n_x(end)+n_h(end);
 n_y=ny_beg:1:ny_end;
 
 % Signal (Output, Matlab)
-y_diff=conv(x,h_diff);
+y_hilb=conv(x,h_hilb);
 
 
 % sound(y_diff);
@@ -48,16 +47,16 @@ ylabel('x[n]','FontSize',12,'FontAngle','italic')
 title('Signal (Input)','FontSize',12)
 
 subplot(312)
-stem(n_h,h_diff,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+stem(n_h,h_hilb,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
 xlabel('n','FontSize',12,'FontAngle','italic')
 ylabel('h[n]','FontSize',12,'FontAngle','italic')
 title('Signal (System)','FontSize',12)
 set(gca,'XLim',[0 10]),set(gca,'XTick',[0:1:10])
 
 subplot(313)
-stem(n_y,y_diff,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+stem(n_y,y_hilb,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
 xlabel('n','FontSize',12,'FontAngle','italic')
-ylabel('y_D_I_F_F[n]','FontSize',12,'FontAngle','italic')
+ylabel('y_hilb[n]','FontSize',12,'FontAngle','italic')
 title('Convolution (DIFF Output)','FontSize',12)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,5 +102,5 @@ set(gca,'XLim',[0 10]),set(gca,'XTick',[0:1:10])
 subplot(313)
 stem(n_y,y_hilb,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
 xlabel('n','FontSize',12,'FontAngle','italic')
-ylabel('y_H_I_L_B[n]','FontSize',12,'FontAngle','italic')
+ylabel('y_hilb[n]','FontSize',12,'FontAngle','italic')
 title('Convolution (HILB Output)','FontSize',12)
