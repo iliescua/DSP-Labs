@@ -11,7 +11,7 @@ clear all, close all, home
 %Puts audio data from laughter audio into S
 S=load('laughter'); 
 x=S.y; fs=S.Fs;
-sound(x);
+% sound(x);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Original
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -23,7 +23,7 @@ t=[1:(length(x))]/fs;
 
 figure
 subplot(211)
-stem(n,x,'Color', 'k'),grid
+stem(n,x,'fill','Color', 'k'),grid
 xlabel('n','FontSize',16,'FontAngle','italic')
 ylabel('x[n]','FontSize',16,'FontAngle','italic')
 title('Discrete Time Signal for Laughgter','FontSize',16)
@@ -72,7 +72,7 @@ ylabel('x[n]','FontSize',12,'FontAngle','italic')
 title('Signal (Input)','FontSize',12)
 
 subplot(312)
-stem(n_h,h_lpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+stem(n_h-1,h_lpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
 xlabel('n','FontSize',12,'FontAngle','italic')
 ylabel('h[n]','FontSize',12,'FontAngle','italic')
 title('Signal (System)','FontSize',12)
@@ -119,7 +119,7 @@ ylabel('x[n]','FontSize',12,'FontAngle','italic')
 title('Signal (Input)','FontSize',12)
 
 subplot(312)
-stem(n_h,h_hpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+stem(n_h-1,h_hpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
 xlabel('n','FontSize',12,'FontAngle','italic')
 ylabel('h[n]','FontSize',12,'FontAngle','italic')
 title('Signal (System)','FontSize',12)
@@ -172,7 +172,7 @@ ylabel('x[n]','FontSize',12,'FontAngle','italic')
 title('Signal (Input)','FontSize',12)
 
 subplot(312)
-stem(n_h,h_bpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+stem(n_h-1,h_bpf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
 xlabel('n','FontSize',12,'FontAngle','italic')
 ylabel('h[n]','FontSize',12,'FontAngle','italic')
 title('Signal (System)','FontSize',12)
@@ -219,7 +219,7 @@ ylabel('x[n]','FontSize',12,'FontAngle','italic')
 title('Signal (Input)','FontSize',12)
 
 subplot(312)
-stem(n_h,h_bsf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
+stem(n_h-1,h_bsf,'fill','LineWidth',4,'Color','k','LineStyle','-'),grid
 xlabel('n','FontSize',12,'FontAngle','italic')
 ylabel('h[n]','FontSize',12,'FontAngle','italic')
 title('Signal (System)','FontSize',12)
