@@ -69,11 +69,11 @@ title('y_h_p_f[n,m]');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %System Input
 h_wlpf=(1/16).*ones(3,3);
-h_wlpf(1,2)=2;
-h_wlpf(2,1)=2;
-h_wlpf(2,2)=4;
-h_wlpf(2,3)=2;
-h_wlpf(3,2)=2;
+h_wlpf(1,2)=1/8;
+h_wlpf(2,1)=1/8;
+h_wlpf(2,2)=1/4;
+h_wlpf(2,3)=1/8;
+h_wlpf(3,2)=1/8;
 
 %Output
 y_wlpf=imfilter(x,h_wlpf);
@@ -91,7 +91,7 @@ title('y_l_p_f[n,m] (Weighted Average)');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %System Input
 h_whpf=(1/9).*-ones(3,3);
-h_whpf(2,2)=8;
+h_whpf(2,2)=8/9;
 
 
 %Output
