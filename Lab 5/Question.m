@@ -12,24 +12,10 @@ x=imread('yellowlily.jpg');
 %Lighten 1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %System Input
-h_lOne=zeros(3,3);
-h_lOne(1,1)=1;
-h_lOne(2,2)=1;
-h_lOne(3,3)=1;
-h_lTwo=zeros(5,5);
-h_lTwo(1,1)=1;
-h_lTwo(2,2)=1;
-h_lTwo(3,3)=1;
-h_lTwo(4,4)=1;
-h_lTwo(5,5)=1;
-h_lThree=zeros(7,7);
-h_lThree(1,1)=1;
-h_lThree(2,2)=1;
-h_lThree(3,3)=1;
-h_lThree(4,4)=1;
-h_lThree(5,5)=1;
-h_lThree(6,6)=1;
-h_lThree(7,7)=1;
+h_lOne=eye(3,3);
+h_lTwo=eye(5,5);
+h_lThree=eye(7,7);
+
 
 %Output
 y_lOne=imfilter(x,h_lOne);
