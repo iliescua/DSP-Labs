@@ -37,11 +37,19 @@ song_Barney=[G,E,G,G,E,G,A,G,F,E,D,E,F,E,F,G,C,C,C,C,C,D,E,F,G,G,D,D,F,E,...
 %Mary Plot
 figure
 specgram(song_Mary,2048,8000,hamming(2048),1024);
+xlabel('Notes','FontSize',16,'FontAngle','italic')
+title('Mary Had A Little Lamb','FontSize',16)
+set(gca,'YLim',[0 600]),set(gca,'YTick',[0:50:600])
+
 
 %Twinkle Plot
 figure
 specgram(song_Twinkle,2048,8000,hamming(2048),1024);
+title('Twinkle Twinkle Little Star','FontSize',16)
+set(gca,'YLim',[0 600]),set(gca,'YTick',[0:50:600])
 
 %Barney
 figure
 specgram(song_Barney,2048,8000,hamming(2048),1024);
+title('Barney I Love You','FontSize',16)
+set(gca,'YLim',[0 600]),set(gca,'YTick',[0:50:600])
