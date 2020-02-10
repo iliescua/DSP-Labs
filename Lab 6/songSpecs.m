@@ -5,11 +5,11 @@
 clear all, close all, home
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Defining Notes
+% Notes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Defining the notes
-note=@(f)cos(2*pi*f.*[0:1/8000:0.5]);
+note=@(freq)cos(2*pi*freq.*[0:1/8000:0.5]);
 
 %Freq of the 4th note in each octave in Hz
 C=note(261.63);
@@ -26,21 +26,22 @@ As=note(466.16);
 B=note(493.88);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Question 1
+% Songs
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-song_Spider=[G,C,C,C,D,E,E,E,D,C,D,E,C,E,E,F,G,G,F,E,F,G,E,C,C,D,E,E,D,C,...
-    D,E,C,G,C,C,C,D,E,E,E,D,C,D,E,C];
+song_Mary=[E,D,C,D,E,E,E,D,D,D,E,E,E,E,D,C,D,E,E,E,E,D,D,E,D,C];
+song_Twinkle=[E,E,B,B,Cs,Cs,B,A,A,Gs,Gs,Fs,Fs,E,B,B,A,A,Gs,Gs,Fs,B,B,A,A,...
+    Gs,Gs,Fs,E,E,B,B,Cs,Cs,B,A,A,Gs,Gs,Fs,Fs,E];
+song_Barney=[G,E,G,G,E,G,A,G,F,E,D,E,F,E,F,G,C,C,C,C,C,D,E,F,G,G,D,D,F,E,...
+    D,C,G,E,G,G,E,G,A,G,F,E,D,E,F,E,F,G,C,C,C,C,C,D,E,F,G,G,D,D,F,E,D,C];
 
-%Spider Plot
+%Mary Plot
 figure
-specgram(song_Spider,2048,8000,hamming(2048),1024);
+specgram(song_Mary,2048,8000,hamming(2048),1024);
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Question 2
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-song_Bridge=[G,A,G,F,E,F,G,D,E,F,E,F,G,G,A,G,F,E,F,G,D,G,E,C,G,A,G,F,E,F,...
-    G,D,E,F,E,F,G,G,A,G,F,E,F,G,D,G,E,C];
-
-%Bridge Plot
+%Twinkle Plot
 figure
-specgram(song_Bridge,2048,8000,hamming(2048),1024);
+specgram(song_Twinkle,2048,8000,hamming(2048),1024);
+
+%Barney
+figure
+specgram(song_Barney,2048,8000,hamming(2048),1024);

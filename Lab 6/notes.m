@@ -9,7 +9,7 @@ clear all, close all, home
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Defining the notes
-note=@(f)cos(2*pi*f.*[0:1/8000:0.5]);
+note=@(freq)cos(2*pi*freq.*[0:1/8000:0.5]);
 
 %Freq of the 4th note in each octave in Hz
 C=note(261.63);
@@ -25,96 +25,101 @@ A=note(440);
 As=note(466.16);
 B=note(493.88);
 
-%Power spectral density computation function
-P=@(note)periodogram(note,hamming(length(note)),length(note),8000,'power');
+%Power spectral density computation equations
+[PC,C]=periodogram(C,hamming(length(C)),length(C),8000,'power');
+[PCs,Cs]=periodogram(Cs,hamming(length(Cs)),length(Cs),8000,'power');
+[PD,D]=periodogram(D,hamming(length(D)),length(D),8000,'power');
+[PDs,Ds]=periodogram(Ds,hamming(length(Ds)),length(Ds),8000,'power');
+[PE,E]=periodogram(E,hamming(length(E)),length(E),8000,'power');
+[PF,F]=periodogram(F,hamming(length(F)),length(F),8000,'power');
+[PFs,Fs]=periodogram(Fs,hamming(length(Fs)),length(Fs),8000,'power');
+[PG,G]=periodogram(G,hamming(length(G)),length(G),8000,'power');
+[PGs,Gs]=periodogram(Gs,hamming(length(Gs)),length(Gs),8000,'power');
+[PA,A]=periodogram(A,hamming(length(A)),length(A),8000,'power');
+[PAs,As]=periodogram(As,hamming(length(As)),length(As),8000,'power');
+[PB,B]=periodogram(B,hamming(length(B)),length(B),8000,'power');
 
 figure
 subplot(621)
-plot(P(C),10*log10(P(C)),'Color','k'),grid;
+plot(C,10*log10(PC),'Color','k'),grid;
 xlabel('f','FontSize',16,'FontAngle','italic')
 ylabel('P(C)','FontSize',16,'FontAngle','italic')
 title('Note C','FontSize',16)
+set(gca,'XLim',[0 600]),set(gca,'XTick',[0:50:600])
 
 subplot(622)
-plot(P(Cs),10*log10(P(Cs)),'Color','k'),grid;
+plot(Cs,10*log10(PCs),'Color','k'),grid;
 xlabel('f','FontSize',16,'FontAngle','italic')
 ylabel('P(C#)','FontSize',16,'FontAngle','italic')
 title('Note C#','FontSize',16)
+set(gca,'XLim',[0 600]),set(gca,'XTick',[0:50:600])
 
 subplot(623)
-plot(P(D),10*log10(P(D)),'Color','k'),grid;
+plot(D,10*log10(PD),'Color','k'),grid;
 xlabel('f','FontSize',16,'FontAngle','italic')
 ylabel('P(D)','FontSize',16,'FontAngle','italic')
 title('Note D','FontSize',16)
+set(gca,'XLim',[0 600]),set(gca,'XTick',[0:50:600])
 
 subplot(624)
-plot(P(Ds),10*log10(P(Ds)),'Color','k'),grid;
+plot(Ds,10*log10(PDs),'Color','k'),grid;
 xlabel('f','FontSize',16,'FontAngle','italic')
 ylabel('P(D#)','FontSize',16,'FontAngle','italic')
 title('Note D#','FontSize',16)
+set(gca,'XLim',[0 600]),set(gca,'XTick',[0:50:600])
 
 subplot(625)
-plot(P(E),10*log10(P(E)),'Color','k'),grid;
+plot(E,10*log10(PE),'Color','k'),grid;
 xlabel('f','FontSize',16,'FontAngle','italic')
 ylabel('P(E)','FontSize',16,'FontAngle','italic')
 title('Note E','FontSize',16)
+set(gca,'XLim',[0 600]),set(gca,'XTick',[0:50:600])
 
 subplot(626)
-plot(P(F),10*log10(P(F)),'Color','k'),grid;
+plot(F,10*log10(PF),'Color','k'),grid;
 xlabel('f','FontSize',16,'FontAngle','italic')
 ylabel('P(F)','FontSize',16,'FontAngle','italic')
 title('Note F','FontSize',16)
+set(gca,'XLim',[0 600]),set(gca,'XTick',[0:50:600])
 
 subplot(627)
-plot(P(Fs),10*log10(P(Fs)),'Color','k'),grid;
+plot(Fs,10*log10(PFs),'Color','k'),grid;
 xlabel('f','FontSize',16,'FontAngle','italic')
 ylabel('P(F#)','FontSize',16,'FontAngle','italic')
 title('Note F#','FontSize',16)
+set(gca,'XLim',[0 600]),set(gca,'XTick',[0:50:600])
 
 subplot(628)
-plot(P(G),10*log10(P(G)),'Color','k'),grid;
+plot(G,10*log10(PG),'Color','k'),grid;
 xlabel('f','FontSize',16,'FontAngle','italic')
 ylabel('P(G)','FontSize',16,'FontAngle','italic')
 title('Note G','FontSize',16)
+set(gca,'XLim',[0 600]),set(gca,'XTick',[0:50:600])
 
 subplot(629)
-plot(P(Gs),10*log10(P(Gs)),'Color','k'),grid;
+plot(Gs,10*log10(PGs),'Color','k'),grid;
 xlabel('f','FontSize',16,'FontAngle','italic')
 ylabel('P(G#)','FontSize',16,'FontAngle','italic')
 title('Note G#','FontSize',16)
+set(gca,'XLim',[0 600]),set(gca,'XTick',[0:50:600])
 
 subplot(6,2,10)
-plot(P(A),10*log10(P(A)),'Color','k'),grid;
+plot(A,10*log10(PA),'Color','k'),grid;
 xlabel('f','FontSize',16,'FontAngle','italic')
 ylabel('P(A)','FontSize',16,'FontAngle','italic')
 title('Note A','FontSize',16)
+set(gca,'XLim',[0 600]),set(gca,'XTick',[0:50:600])
 
 subplot(6,2,11)
-plot(P(As),10*log10(P(As)),'Color','k'),grid;
+plot(As,10*log10(PAs),'Color','k'),grid;
 xlabel('f','FontSize',16,'FontAngle','italic')
 ylabel('P(A#)','FontSize',16,'FontAngle','italic')
 title('Note A#','FontSize',16)
+set(gca,'XLim',[0 600]),set(gca,'XTick',[0:50:600])
 
 subplot(6,2,12)
-plot(P(B),10*log10(P(B)),'Color','k'),grid;
+plot(B,10*log10(PB),'Color','k'),grid;
 xlabel('f','FontSize',16,'FontAngle','italic')
 ylabel('P(B)','FontSize',16,'FontAngle','italic')
 title('Note B','FontSize',16)
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Songs
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-song_Mary=[E,D,C,D,E,E,E,D,D,D,E,E,E,E,D,C,D,E,E,E,E,D,D,E,D,C];
-song_Twinkle=[E,E,B,B,Cs,Cs,B,A,A,Gs,Gs,Fs,Fs,E,B,B,A,A,Gs,Gs,Fs,B,B,A,A,...
-    Gs,Gs,Fs,E,E,B,B,Cs,Cs,B,A,A,Gs,Gs,Fs,Fs,E];
-song_Barney=[G,E,G,G,E,G,A,G,F,E,D,E,F,E,F,G,C,C,C,C,C,D,E,F,G,G,D,D,F,E,...
-    D,C,G,E,G,G,E,G,A,G,F,E,D,E,F,E,F,G,C,C,C,C,C,D,E,F,G,G,D,D,F,E,D,C];
-%Mary Plot
-figure
-specgram(song_Mary,2048,8000,hamming(2048),1024);
-%Twinkle Plot
-figure
-specgram(song_Twinkle,2048,8000,hamming(2048),1024);
-%Barney
-figure
-specgram(song_Barney,2048,8000,hamming(2048),1024);
+set(gca,'XLim',[0 600]),set(gca,'XTick',[0:50:600])
