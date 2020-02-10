@@ -34,6 +34,8 @@ song_Spider=[G,C,C,C,D,E,E,E,D,C,D,E,C,E,E,F,G,G,F,E,F,G,E,C,C,D,E,E,D,C,...
 %Spider Plot
 figure
 specgram(song_Spider,2048,8000,hamming(2048),1024);
+title('Itsy Bitsy Spider','FontSize',16)
+set(gca,'YLim',[0 600]),set(gca,'YTick',[0:50:600])
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Question 2
@@ -44,3 +46,5 @@ song_Bridge=[G,A,G,F,E,F,G,D,E,F,E,F,G,G,A,G,F,E,F,G,D,G,E,C,G,A,G,F,E,F,...
 %Bridge Plot
 figure
 specgram(song_Bridge,2048,8000,hamming(2048),1024);
+title('London Bridge','FontSize',16)
+set(gca,'YLim',[0 600]),set(gca,'YTick',[0:50:600])
