@@ -42,7 +42,7 @@ set(gca,'YLim',[0 600]),set(gca,'YTick',[0:50:600])
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 song_Bridge=[G,A,G,F,E,F,G,D,E,F,E,F,G,G,A,G,F,E,F,G,D,G,E,C,G,A,G,F,E,F,...
     G,D,E,F,E,F,G,G,A,G,F,E,F,G,D,G,E,C];
-
+sound(song_Bridge);
 %Bridge Plot
 figure
 specgram(song_Bridge,2048,8000,hamming(2048),1024);
